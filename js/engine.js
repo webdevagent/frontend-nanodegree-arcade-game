@@ -18,16 +18,19 @@ var Engine = (function(global) {
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas element's height/width and add it to the DOM.
      */
+    let gameScreen=document.querySelector('.PlayScreen')
     var doc = global.document,
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = 505;
-    canvas.height = 606;
-    doc.body.appendChild(canvas);
 
+    canvas.width =505;//505;
+    canvas.height=606;//606;
+    canvas.classList.add('PlayScreen');
+    //doc.body.appendChild(canvas);
+    doc.body.appendChild(canvas);
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
