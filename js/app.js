@@ -66,23 +66,14 @@ class Hero {
     // all computers.
   };
   handleInput(key) {
-    switch (key) {
-      case 'left':
-        this.x -= 25;
-        break;
-      case 'right':
-        this.x += 25;
-        break;
-      case 'up':
-        this.y -= 25;
-        break;
-      case 'down':
-        this.y += 25;
-        break;
+      if(key=='left'&&this.x>20)this.x -= 25;
+      if(key=='right'&&this.x<400)this.x += 25;
+      if(key=='up'&&this.y>-10)this.y -= 25;
+      if(key=='down'&&this.y<400)this.y += 25;
+
     };
 
   };
-};
 // Variables applied to each of our instances go here,
 // we've provided one for you to get started
 
