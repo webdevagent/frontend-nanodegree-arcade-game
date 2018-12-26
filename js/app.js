@@ -19,7 +19,7 @@ class Enemy {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   };
   setMoveSpeed() {
-    this.speed = Math.floor((Math.random() * 150) + 10+points*20);
+    this.speed = Math.floor((Math.random() * 150) + 10 + points * 20);
   }
   checkCollision() {
     if (
