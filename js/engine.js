@@ -19,11 +19,15 @@ var Engine = (function(global) {
      * set the canvas element's height/width and add it to the DOM.
      */
     let gameScreen=document.querySelector('.PlayScreen')
+
     var doc = global.document,
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
+    let point;
+    let life;
+    let result;
 
 
     canvas.width =505;//505;
@@ -31,6 +35,7 @@ var Engine = (function(global) {
     canvas.classList.add('PlayScreen');
     //doc.body.appendChild(canvas);
     doc.body.appendChild(canvas);
+
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
@@ -97,6 +102,10 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+        pointStar.update();
+        point=getPoints();
+        life=getLifes();
+        result=getStats();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -138,6 +147,20 @@ var Engine = (function(global) {
                  * we're using them over and over.
                  */
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
+
+                ctx.font = "30px Arial";
+                ctx.fillText(`Points: ${point}`,10,30);
+                ctx.fillText( `Lifes: ${life}`,400,30);
+
+                if(result!=undefined){
+
+                  ctx.font="60px Arial";
+
+                  ctx.fillText( result,50, 450);
+
+
+                }
+
             }
         }
 
@@ -157,6 +180,7 @@ var Engine = (function(global) {
         });
 
         player.render();
+        pointStar.render();
     }
 
     /* This function does nothing but it could have been a good place to
@@ -176,7 +200,8 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Star.png'
     ]);
     Resources.onReady(init);
 
